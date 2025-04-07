@@ -38,6 +38,10 @@ const moduleRoutes = [
     path: "/review",
     route: ReviewRoutes,
   },
+  {
+    path: "/payment",
+    route: SSLRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

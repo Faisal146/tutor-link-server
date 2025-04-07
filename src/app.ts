@@ -31,7 +31,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    message: "Welcome to the Next Mart",
+    message: "Welcome to Tutor Link",
     version: "1.0.0",
     clientDetails: {
       ipAddress: clientIp,
@@ -43,10 +43,6 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
       uptime: `${Math.floor(serverUptime / 60 / 60)} hours ${Math.floor(
         (serverUptime / 60) % 60
       )} minutes`,
-    },
-    developerContact: {
-      email: "fahimfiroz.ph@gmail.com",
-      website: "https://programming-hero.com",
     },
   });
 });

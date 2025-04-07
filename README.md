@@ -1,129 +1,84 @@
-# Tutor Link - Server
+# TutorLink Backend
 
-NextMart is a robust and scalable backend solution for an e-commerce platform. It handles user authentication, product management, order processing, payment integration, and more. Built with Node.js, Express.js, and MongoDB, this project is designed for high performance and flexibility.
+## 🎓 Find & Connect with the Best Tutors
 
----
+This repository contains the backend of TutorLink, a platform that allows students to find tutors, book sessions, and manage their learning journey. The backend is built with Node.js, Express, and MongoDB.
 
-## Features
+## 🚀 Features
 
-- **User Authentication**: Secure login, registration, and password reset using JWT.
-- **Product Management**: CRUD operations for products.
-- **Order Management**: Seamless order placement and processing.
-- **Payment Integration**: Integrated with SSLCommerz for secure payment processing.
-- **Cloudinary Integration**: Efficient image storage and retrieval.
-- **Email Notifications**: Automated email services for various actions.
+- **Authentication & Authorization:** Secure JWT-based authentication for students and tutors.
+- **Tutor Management:** CRUD operations for tutor profiles, subjects, and availability.
+- **Booking System:** Students can book tutors, view past sessions, and make payments.
+- **Payment Integration:** Supports SSLCommerz payment.
+- **Reviews & Ratings:** Students can rate and review tutors.
+- **Admin Panel (Optional):** Admins can oversee users, tutor approvals, and platform content.
 
----
+## 🛠 Tech Stack
 
-## Installation Guide
+- **Backend Framework:** Node.js + Express.js
+- **Database:** MongoDB + Mongoose
+- **Authentication:** JWT + bcrypt
+- **Payment Gateway:** SSLCommerz, Stripe, or PayPal
+- **File Upload:** Multer (if profile pictures are included)
 
-Follow the steps below to set up and run the project locally:
+## 🔧 Installation & Setup
 
 ### Prerequisites
 
-- Node.js (v20+)
-- MongoDB (Local or Atlas)
-- Yarn or npm
+- Node.js >= 18.x
+- MongoDB installed and running
 
 ### Steps
 
 1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Apollo-Level2-Web-Dev/NextMert-Server.git
-   cd NextMert-Server
+   ```sh
+   git clone https://github.com/Faisal146/tutor-link-server
+   cd tutorlink-backend
    ```
-
 2. Install dependencies:
-
-   ```bash
-   yarn install
-   # or
+   ```sh
    npm install
    ```
-
-3. Create a `.env` file in the root directory and configure the environment variables as shown below.
-
-4. Run the development server:
-
-   ```bash
-   yarn dev
-   # or
+3. Set up environment variables:
+   Create a `.env` file and configure MongoDB URI, JWT secret, and payment API keys.
+4. Start the server:
+   ```sh
    npm run dev
    ```
 
-5. Access the application on `http://localhost:3001`.
+## 📡 API Endpoints
 
----
+### Auth
 
-## Environment Variables
+- `POST /api/auth/register` - Register a new user (student/tutor)
+- `POST /api/auth/login` - Login and receive a JWT token
 
-The following `.env` configuration is required to run the project:
+### Tutors
 
-```dotenv
-# Environment
-NODE_ENV=development
+- `GET /api/tutors` - Get a list of tutors
+- `POST /api/tutors` - Create a new tutor profile (authenticated users only)
+- `PATCH /api/tutors/:id` - Update tutor details
+- `DELETE /api/tutors/:id` - Delete a tutor profile
 
-# Port
-PORT=3001
+### Bookings
 
-# Database URL
-DB_URL="mongodb+srv://<username>:<password>@cluster0.mongodb.net/<db_name>?retryWrites=true&w=majority"
+- `POST /api/bookings` - Book a tutor
+- `GET /api/bookings/student` - Get student booking history
+- `GET /api/bookings/tutor` - Get tutor’s booking requests
 
-# Bcrypt Salt Rounds
-BCRYPT_SALT_ROUNDS=12
+### Payments
 
-# JWT Secrets and Expiry
-JWT_ACCESS_SECRET="<your_access_secret>"
-JWT_ACCESS_EXPIRES_IN=7d
-JWT_REFRESH_SECRET="<your_refresh_secret>"
-JWT_REFRESH_EXPIRES_IN=1y
-JWT_OTP_SECRET="<your_otp_secret>"
-JWT_PASS_RESET_SECRET="<your_pass_reset_secret>"
-JWT_PASS_RESET_EXPIRES_IN=15m
+- `POST /api/payment/init` - Process a payment for a session
 
-# Cloudinary Credentials
-CLOUDINARY_CLOUD_NAME="<your_cloudinary_cloud_name>"
-CLOUDINARY_API_KEY="<your_cloudinary_api_key>"
-CLOUDINARY_API_SECRET="<your_cloudinary_api_secret>"
+## 🚀 Deployment
 
-# Email Configuration
-SENDER_EMAIL="<your_email>"
-SENDER_APP_PASS="<your_app_password>"
+For production deployment:
 
-# SSLCommerz Payment Info
-STORE_NAME="teststore"
-PAYMENT_API="https://sandbox.sslcommerz.com/gwprocess/v3/api.php"
-VALIDATION_API="https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php"
-STORE_ID="<your_store_id>"
-STORE_PASSWORD="<your_store_password>"
-VALIDATION_URL="<your_validation_url>"
-SUCCESS_URL="<your_success_url>"
-FAILED_URL="<your_failed_url>"
-CANCEL_URL="<your_cancel_url>"
+```sh
+npm run build
+npm start
 ```
 
----
+## 🤝 Contributing
 
-## Scripts
-
-- **Start Development Server**:
-  ```bash
-  yarn dev
-  ```
-- **Build Production**:
-  ```bash
-  yarn build
-  ```
-- **Run in Production Mode**:
-  ```bash
-  yarn start
-  ```
-
----
-
-## API Documentation
-
-[https://documenter.getpostman.com/view/28371413/2sAYQXpCyd](https://documenter.getpostman.com/view/28371413/2sAYQXpCyd)
-
-**NextMart** is a single-vendor e-commerce platform. This repository contains the server-side implementation, providing robust backend services and APIs to power the platform.
+Pull requests are welcome! For major changes, please open an issue first to discuss the proposal.
